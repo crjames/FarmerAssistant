@@ -1,0 +1,36 @@
+CREATE TABLE `assistant`.`farmer` (
+  `idfarmer` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `farmerName` VARCHAR(120) NOT NULL DEFAULT '\"\"' COMMENT '承包人姓名',
+  `farmerTel` VARCHAR(20) NOT NULL DEFAULT '\"\"' COMMENT '联系电话',
+  `farmerRealName` VARCHAR(120) NOT NULL DEFAULT '\"\"' COMMENT '真实姓名',
+  `farmerEmail` VARCHAR(120) NULL COMMENT '联系邮箱',
+  `farmerAge` INT NULL COMMENT '年龄',
+  `farmerDesc` VARCHAR(4000) NULL COMMENT '自我描述',
+  `country` VARCHAR(45) NOT NULL DEFAULT '\"\"' COMMENT '国家',
+  `province` VARCHAR(120) NOT NULL DEFAULT '\"\"' COMMENT '省、直辖市、自治区',
+  `city` VARCHAR(200) NOT NULL DEFAULT '\"\"' COMMENT '地级市',
+  `towns` VARCHAR(200) NULL COMMENT '乡镇',
+  `detailAddress` VARCHAR(500) NOT NULL DEFAULT '\"\"' COMMENT '详细地址',
+  `farmerIDCard` VARCHAR(45) NOT NULL DEFAULT '\"\"' COMMENT '身份证',
+  `farmerLicense` VARCHAR(100) NULL COMMENT '如果是农场，农场编号',
+  `createTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建/注册时间',
+  `updateTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '信息更新时间',
+  `isDeleted` BIT NOT NULL DEFAULT 0 COMMENT '是否删除',
+  PRIMARY KEY (`idfarmer`),
+  UNIQUE INDEX `idfarmer_UNIQUE` (`idfarmer` ASC))
+COMMENT = '农场主、承包人、农民';
+
+
+ALTER TABLE `assistant`.`farmer`
+CHANGE COLUMN `idfarmer` `farmer_id` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键id' ,
+CHANGE COLUMN `farmerName` `farmer_name` VARCHAR(120) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL DEFAULT '""' COMMENT '承包人姓名' ,
+CHANGE COLUMN `farmerTel` `farmer_tel` VARCHAR(20) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL DEFAULT '""' COMMENT '联系电话' ,
+CHANGE COLUMN `farmerRealName` `farmer_realName` VARCHAR(120) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL DEFAULT '""' COMMENT '真实姓名' ,
+CHANGE COLUMN `farmerEmail` `farmer_email` VARCHAR(120) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL COMMENT '联系邮箱' ,
+CHANGE COLUMN `farmerAge` `farmer_age` INT(11) NULL DEFAULT NULL COMMENT '年龄' ,
+CHANGE COLUMN `farmerDesc` `farmer_desc` VARCHAR(4000) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL COMMENT '自我描述' ,
+CHANGE COLUMN `farmerIDCard` `farmer_IDCard` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NOT NULL DEFAULT '""' COMMENT '身份证' ,
+CHANGE COLUMN `farmerLicense` `farmer_license` VARCHAR(100) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL COMMENT '如果是农场，农场编号' ,
+CHANGE COLUMN `createTime` `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建/注册时间' ,
+CHANGE COLUMN `updateTime` `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '信息更新时间' ;
+
