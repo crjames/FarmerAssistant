@@ -1,9 +1,7 @@
-package com.farmerassistant.mapper;
+package main.java.com.farmerassistant.mapper;
 
-import com.farmerassistant.model.Farmer;
-import org.springframework.stereotype.Component;
+import main.java.com.farmerassistant.model.Farmer;
 
-@Component(value = "farmerMapper")
 public interface FarmerMapper {
     int deleteByPrimaryKey(Long farmerId);
 

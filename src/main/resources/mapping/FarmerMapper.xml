@@ -1,41 +1,41 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.farmerassistant.mapper.FarmerMapper" >
-  <resultMap id="BaseResultMap" type="com.farmerassistant.model.Farmer" >
-    <id column="farmer_id" property="farmerId" jdbcType="BIGINT" />
-    <result column="farmer_name" property="farmerName" jdbcType="VARCHAR" />
-    <result column="farmer_tel" property="farmerTel" jdbcType="VARCHAR" />
-    <result column="farmer_realName" property="farmerRealname" jdbcType="VARCHAR" />
-    <result column="farmer_email" property="farmerEmail" jdbcType="VARCHAR" />
-    <result column="farmer_age" property="farmerAge" jdbcType="INTEGER" />
-    <result column="farmer_desc" property="farmerDesc" jdbcType="VARCHAR" />
-    <result column="country" property="country" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="towns" property="towns" jdbcType="VARCHAR" />
-    <result column="detailAddress" property="detailaddress" jdbcType="VARCHAR" />
-    <result column="farmer_IDCard" property="farmerIdcard" jdbcType="VARCHAR" />
-    <result column="farmer_license" property="farmerLicense" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="isDeleted" property="isdeleted" jdbcType="BIT" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.java.com.farmerassistant.mapper.FarmerMapper">
+  <resultMap id="BaseResultMap" type="main.java.com.farmerassistant.model.Farmer">
+    <id column="farmer_id" jdbcType="BIGINT" property="farmerId" />
+    <result column="farmer_name" jdbcType="VARCHAR" property="farmerName" />
+    <result column="farmer_tel" jdbcType="VARCHAR" property="farmerTel" />
+    <result column="farmer_realName" jdbcType="VARCHAR" property="farmerRealname" />
+    <result column="farmer_email" jdbcType="VARCHAR" property="farmerEmail" />
+    <result column="farmer_age" jdbcType="INTEGER" property="farmerAge" />
+    <result column="farmer_desc" jdbcType="VARCHAR" property="farmerDesc" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="towns" jdbcType="VARCHAR" property="towns" />
+    <result column="detailAddress" jdbcType="VARCHAR" property="detailaddress" />
+    <result column="farmer_IDCard" jdbcType="VARCHAR" property="farmerIdcard" />
+    <result column="farmer_license" jdbcType="VARCHAR" property="farmerLicense" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="isDeleted" jdbcType="BIT" property="isdeleted" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     farmer_id, farmer_name, farmer_tel, farmer_realName, farmer_email, farmer_age, farmer_desc, 
     country, province, city, towns, detailAddress, farmer_IDCard, farmer_license, create_time, 
     update_time, isDeleted
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from farmer
     where farmer_id = #{farmerId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from farmer
     where farmer_id = #{farmerId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.farmerassistant.model.Farmer" >
+  <insert id="insert" parameterType="main.java.com.farmerassistant.model.Farmer">
     insert into farmer (farmer_id, farmer_name, farmer_tel, 
       farmer_realName, farmer_email, farmer_age, 
       farmer_desc, country, province, 
@@ -49,170 +49,401 @@
       #{farmerIdcard,jdbcType=VARCHAR}, #{farmerLicense,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.farmerassistant.model.Farmer" >
+  <insert id="insertSelective" parameterType="main.java.com.farmerassistant.model.Farmer">
     insert into farmer
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="farmerId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmerId != null">
         farmer_id,
       </if>
-      <if test="farmerName != null" >
+      <if test="farmerName != null">
         farmer_name,
       </if>
-      <if test="farmerTel != null" >
+      <if test="farmerTel != null">
         farmer_tel,
       </if>
-      <if test="farmerRealname != null" >
+      <if test="farmerRealname != null">
         farmer_realName,
       </if>
-      <if test="farmerEmail != null" >
+      <if test="farmerEmail != null">
         farmer_email,
       </if>
-      <if test="farmerAge != null" >
+      <if test="farmerAge != null">
         farmer_age,
       </if>
-      <if test="farmerDesc != null" >
+      <if test="farmerDesc != null">
         farmer_desc,
       </if>
-      <if test="country != null" >
+      <if test="country != null">
         country,
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         province,
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         city,
       </if>
-      <if test="towns != null" >
+      <if test="towns != null">
         towns,
       </if>
-      <if test="detailaddress != null" >
+      <if test="detailaddress != null">
         detailAddress,
       </if>
-      <if test="farmerIdcard != null" >
+      <if test="farmerIdcard != null">
         farmer_IDCard,
       </if>
-      <if test="farmerLicense != null" >
+      <if test="farmerLicense != null">
         farmer_license,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
-      <if test="isdeleted != null" >
+      <if test="isdeleted != null">
         isDeleted,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="farmerId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmerId != null">
         #{farmerId,jdbcType=BIGINT},
       </if>
-      <if test="farmerName != null" >
+      <if test="farmerName != null">
         #{farmerName,jdbcType=VARCHAR},
       </if>
-      <if test="farmerTel != null" >
+      <if test="farmerTel != null">
         #{farmerTel,jdbcType=VARCHAR},
       </if>
-      <if test="farmerRealname != null" >
+      <if test="farmerRealname != null">
         #{farmerRealname,jdbcType=VARCHAR},
       </if>
-      <if test="farmerEmail != null" >
+      <if test="farmerEmail != null">
         #{farmerEmail,jdbcType=VARCHAR},
       </if>
-      <if test="farmerAge != null" >
+      <if test="farmerAge != null">
         #{farmerAge,jdbcType=INTEGER},
       </if>
-      <if test="farmerDesc != null" >
+      <if test="farmerDesc != null">
         #{farmerDesc,jdbcType=VARCHAR},
       </if>
-      <if test="country != null" >
+      <if test="country != null">
         #{country,jdbcType=VARCHAR},
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         #{city,jdbcType=VARCHAR},
       </if>
-      <if test="towns != null" >
+      <if test="towns != null">
         #{towns,jdbcType=VARCHAR},
       </if>
-      <if test="detailaddress != null" >
+      <if test="detailaddress != null">
         #{detailaddress,jdbcType=VARCHAR},
       </if>
-      <if test="farmerIdcard != null" >
+      <if test="farmerIdcard != null">
         #{farmerIdcard,jdbcType=VARCHAR},
       </if>
-      <if test="farmerLicense != null" >
+      <if test="farmerLicense != null">
         #{farmerLicense,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isdeleted != null" >
+      <if test="isdeleted != null">
         #{isdeleted,jdbcType=BIT},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.farmerassistant.model.Farmer" >
+  <update id="updateByPrimaryKeySelective" parameterType="main.java.com.farmerassistant.model.Farmer">
     update farmer
-    <set >
-      <if test="farmerName != null" >
+    <set>
+      <if test="farmerName != null">
         farmer_name = #{farmerName,jdbcType=VARCHAR},
       </if>
-      <if test="farmerTel != null" >
+      <if test="farmerTel != null">
         farmer_tel = #{farmerTel,jdbcType=VARCHAR},
       </if>
-      <if test="farmerRealname != null" >
+      <if test="farmerRealname != null">
         farmer_realName = #{farmerRealname,jdbcType=VARCHAR},
       </if>
-      <if test="farmerEmail != null" >
+      <if test="farmerEmail != null">
         farmer_email = #{farmerEmail,jdbcType=VARCHAR},
       </if>
-      <if test="farmerAge != null" >
+      <if test="farmerAge != null">
         farmer_age = #{farmerAge,jdbcType=INTEGER},
       </if>
-      <if test="farmerDesc != null" >
+      <if test="farmerDesc != null">
         farmer_desc = #{farmerDesc,jdbcType=VARCHAR},
       </if>
-      <if test="country != null" >
+      <if test="country != null">
         country = #{country,jdbcType=VARCHAR},
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         province = #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="towns != null" >
+      <if test="towns != null">
         towns = #{towns,jdbcType=VARCHAR},
       </if>
-      <if test="detailaddress != null" >
+      <if test="detailaddress != null">
         detailAddress = #{detailaddress,jdbcType=VARCHAR},
       </if>
-      <if test="farmerIdcard != null" >
+      <if test="farmerIdcard != null">
         farmer_IDCard = #{farmerIdcard,jdbcType=VARCHAR},
       </if>
-      <if test="farmerLicense != null" >
+      <if test="farmerLicense != null">
         farmer_license = #{farmerLicense,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="isdeleted != null" >
+      <if test="isdeleted != null">
         isDeleted = #{isdeleted,jdbcType=BIT},
       </if>
     </set>
     where farmer_id = #{farmerId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.farmerassistant.model.Farmer" >
+  <update id="updateByPrimaryKey" parameterType="main.java.com.farmerassistant.model.Farmer">
+    update farmer
+    set farmer_name = #{farmerName,jdbcType=VARCHAR},
+      farmer_tel = #{farmerTel,jdbcType=VARCHAR},
+      farmer_realName = #{farmerRealname,jdbcType=VARCHAR},
+      farmer_email = #{farmerEmail,jdbcType=VARCHAR},
+      farmer_age = #{farmerAge,jdbcType=INTEGER},
+      farmer_desc = #{farmerDesc,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      towns = #{towns,jdbcType=VARCHAR},
+      detailAddress = #{detailaddress,jdbcType=VARCHAR},
+      farmer_IDCard = #{farmerIdcard,jdbcType=VARCHAR},
+      farmer_license = #{farmerLicense,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      isDeleted = #{isdeleted,jdbcType=BIT}
+    where farmer_id = #{farmerId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.farmerassistant.model.Farmer">
+    <id column="farmer_id" jdbcType="BIGINT" property="farmerId" />
+    <result column="farmer_name" jdbcType="VARCHAR" property="farmerName" />
+    <result column="farmer_tel" jdbcType="VARCHAR" property="farmerTel" />
+    <result column="farmer_realName" jdbcType="VARCHAR" property="farmerRealname" />
+    <result column="farmer_email" jdbcType="VARCHAR" property="farmerEmail" />
+    <result column="farmer_age" jdbcType="INTEGER" property="farmerAge" />
+    <result column="farmer_desc" jdbcType="VARCHAR" property="farmerDesc" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="towns" jdbcType="VARCHAR" property="towns" />
+    <result column="detailAddress" jdbcType="VARCHAR" property="detailaddress" />
+    <result column="farmer_IDCard" jdbcType="VARCHAR" property="farmerIdcard" />
+    <result column="farmer_license" jdbcType="VARCHAR" property="farmerLicense" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="isDeleted" jdbcType="BIT" property="isdeleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    farmer_id, farmer_name, farmer_tel, farmer_realName, farmer_email, farmer_age, farmer_desc, 
+    country, province, city, towns, detailAddress, farmer_IDCard, farmer_license, create_time, 
+    update_time, isDeleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from farmer
+    where farmer_id = #{farmerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from farmer
+    where farmer_id = #{farmerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.farmerassistant.model.Farmer">
+    insert into farmer (farmer_id, farmer_name, farmer_tel, 
+      farmer_realName, farmer_email, farmer_age, 
+      farmer_desc, country, province, 
+      city, towns, detailAddress, 
+      farmer_IDCard, farmer_license, create_time, 
+      update_time, isDeleted)
+    values (#{farmerId,jdbcType=BIGINT}, #{farmerName,jdbcType=VARCHAR}, #{farmerTel,jdbcType=VARCHAR}, 
+      #{farmerRealname,jdbcType=VARCHAR}, #{farmerEmail,jdbcType=VARCHAR}, #{farmerAge,jdbcType=INTEGER}, 
+      #{farmerDesc,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{towns,jdbcType=VARCHAR}, #{detailaddress,jdbcType=VARCHAR}, 
+      #{farmerIdcard,jdbcType=VARCHAR}, #{farmerLicense,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.farmerassistant.model.Farmer">
+    insert into farmer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmerId != null">
+        farmer_id,
+      </if>
+      <if test="farmerName != null">
+        farmer_name,
+      </if>
+      <if test="farmerTel != null">
+        farmer_tel,
+      </if>
+      <if test="farmerRealname != null">
+        farmer_realName,
+      </if>
+      <if test="farmerEmail != null">
+        farmer_email,
+      </if>
+      <if test="farmerAge != null">
+        farmer_age,
+      </if>
+      <if test="farmerDesc != null">
+        farmer_desc,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="towns != null">
+        towns,
+      </if>
+      <if test="detailaddress != null">
+        detailAddress,
+      </if>
+      <if test="farmerIdcard != null">
+        farmer_IDCard,
+      </if>
+      <if test="farmerLicense != null">
+        farmer_license,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isdeleted != null">
+        isDeleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmerId != null">
+        #{farmerId,jdbcType=BIGINT},
+      </if>
+      <if test="farmerName != null">
+        #{farmerName,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerTel != null">
+        #{farmerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerRealname != null">
+        #{farmerRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerEmail != null">
+        #{farmerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerAge != null">
+        #{farmerAge,jdbcType=INTEGER},
+      </if>
+      <if test="farmerDesc != null">
+        #{farmerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="towns != null">
+        #{towns,jdbcType=VARCHAR},
+      </if>
+      <if test="detailaddress != null">
+        #{detailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerIdcard != null">
+        #{farmerIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerLicense != null">
+        #{farmerLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        #{isdeleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.farmerassistant.model.Farmer">
+    update farmer
+    <set>
+      <if test="farmerName != null">
+        farmer_name = #{farmerName,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerTel != null">
+        farmer_tel = #{farmerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerRealname != null">
+        farmer_realName = #{farmerRealname,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerEmail != null">
+        farmer_email = #{farmerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerAge != null">
+        farmer_age = #{farmerAge,jdbcType=INTEGER},
+      </if>
+      <if test="farmerDesc != null">
+        farmer_desc = #{farmerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="towns != null">
+        towns = #{towns,jdbcType=VARCHAR},
+      </if>
+      <if test="detailaddress != null">
+        detailAddress = #{detailaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerIdcard != null">
+        farmer_IDCard = #{farmerIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="farmerLicense != null">
+        farmer_license = #{farmerLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdeleted != null">
+        isDeleted = #{isdeleted,jdbcType=BIT},
+      </if>
+    </set>
+    where farmer_id = #{farmerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.farmerassistant.model.Farmer">
     update farmer
     set farmer_name = #{farmerName,jdbcType=VARCHAR},
       farmer_tel = #{farmerTel,jdbcType=VARCHAR},

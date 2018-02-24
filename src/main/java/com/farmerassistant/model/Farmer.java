@@ -1,4 +1,4 @@
-package com.farmerassistant.model;
+package main.java.com.farmerassistant.model;
 
 import java.util.Date;
 
